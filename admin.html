@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Tech Velly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            500: '#0c87eb',
+                            900: '#0b3d6f',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800">
+
+    <div class="max-w-5xl mx-auto p-8">
+        <header class="flex justify-between items-center mb-10">
+            <div>
+                <h1 class="text-3xl font-black text-brand-900">Admin Panel</h1>
+                <p class="text-slate-500">Manage Major Projects</p>
+            </div>
+            <a href="index.html" class="bg-white border border-slate-300 px-4 py-2 rounded shadow-sm hover:bg-slate-50 transition">View Site</a>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Upload Form -->
+            <div class="md:col-span-1">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 sticky top-8">
+                    <h2 class="text-xl font-bold mb-4 text-brand-900 border-b pb-2">Add New Project</h2>
+                    <form id="projectForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold mb-1">Project Title</label>
+                            <input type="text" name="title" required class="w-full border rounded p-2 focus:ring-2 focus:ring-brand-500 outline-none">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold mb-1">Description</label>
+                            <textarea name="description" required rows="3" class="w-full border rounded p-2 focus:ring-2 focus:ring-brand-500 outline-none"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold mb-1">Icon Type</label>
+                            <div class="flex gap-4 mb-2">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="iconType" value="emoji" checked onchange="toggleIconInput()"> Emoji
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="iconType" value="image" onchange="toggleIconInput()"> Image
+                                </label>
+                            </div>
+
+                            <div id="emojiInput">
+                                <input type="text" name="emojiIcon" placeholder="Paste emoji here (e.g. 🚀)" class="w-full border rounded p-2 text-2xl text-center">
+                            </div>
+                            
+                            <div id="imageInput" class="hidden">
+                                <input type="file" name="image" accept="image/*" class="w-full text-sm text-slate-500
+                                file:mr-4 file:py-2 file:px-4
+                                file:rounded-full file:border-0
+                                file:text-sm file:font-semibold
+                                file:bg-brand-50 file:text-brand-700
+                                hover:file:bg-brand-100">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-lg shadow transition">
+                            Upload Project
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- List -->
+            <div class="md:col-span-2">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
+                    <h2 class="text-xl font-bold mb-4 text-brand-900 border-b pb-2">Existing Projects</h2>
+                    <div id="projectList" class="space-y-4">
+                        <!-- Items injected here -->
+                        <div class="text-center text-slate-400 py-8">Loading projects...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api/projects';
+
+        function toggleIconInput() {
+            const type = document.querySelector('input[name="iconType"]:checked').value;
+            if (type === 'emoji') {
+                document.getElementById('emojiInput').classList.remove('hidden');
+                document.getElementById('imageInput').classList.add('hidden');
+            } else {
+                document.getElementById('emojiInput').classList.add('hidden');
+                document.getElementById('imageInput').classList.remove('hidden');
+            }
+        }
+
+        async function fetchProjects() {
+            try {
+                const res = await fetch(API_URL);
+                const projects = await res.json();
+                renderList(projects);
+            } catch (err) {
+                console.error(err);
+                document.getElementById('projectList').innerHTML = '<p class="text-red-500">Failed to load projects. Is server running?</p>';
+            }
+        }
+
+        function renderList(projects) {
+            const list = document.getElementById('projectList');
+            list.innerHTML = '';
+
+            projects.forEach(p => {
+                const iconDisplay = p.isImage 
+                    ? `<img src="${p.icon}" class="w-12 h-12 object-contain bg-slate-100 rounded">` 
+                    : `<span class="text-4xl">${p.icon}</span>`;
+
+                const item = document.createElement('div');
+                item.className = 'flex items-center gap-4 p-4 border rounded hover:bg-slate-50 transition group';
+                item.innerHTML = `
+                    <div class="shrink-0 w-16 text-center">${iconDisplay}</div>
+                    <div class="flex-grow">
+                        <h3 class="font-bold text-lg">${p.title}</h3>
+                        <p class="text-sm text-slate-500">${p.description}</p>
+                    </div>
+                    <button onclick="deleteProject(${p.id})" class="text-red-400 hover:text-red-600 font-bold px-3 py-1 border border-red-200 rounded hover:bg-red-50 transition text-sm">Delete</button>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        async function deleteProject(id) {
+            if(!confirm('Delete this project?')) return;
+            
+            try {
+                await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+                fetchProjects();
+            } catch (err) {
+                alert('Error deleting');
+            }
+        }
+
+        document.getElementById('projectForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                if(res.ok) {
+                    e.target.reset();
+                    toggleIconInput(); // Reset view
+                    fetchProjects();
+                    alert('Project Added!');
+                } else {
+                    alert('Error uploading');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Error connecting to server');
+            }
+        });
+
+        // Init
+        fetchProjects();
+    </script>
+</body>
+</html>

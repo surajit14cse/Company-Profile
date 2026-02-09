@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "Online Pharmacy",
+    "description": "Digital health platform for medication ordering and delivery.",
+    "icon": "💊"
+  },
+  {
+    "id": 2,
+    "title": "Headless E-commerce",
+    "description": "Scalable, API-first commerce solution for high-volume retail.",
+    "icon": "🛒"
+  },
+  {
+    "id": 3,
+    "title": "Student Management",
+    "description": "Admin dashboard for educational institutions.",
+    "icon": "🎓"
+  },
+  {
+    "id": 4,
+    "title": "E-commerce App",
+    "description": "Native mobile experience for seamless shopping.",
+    "icon": "📱"
+  },
+  {
+    "id": 5,
+    "title": "Analytics Dashboard",
+    "description": "Real-time data visualization platform for enterprise metrics.",
+    "icon": "📊"
+  },
+  {
+    "id": 6,
+    "title": "Logistics Tracker",
+    "description": "IoT-based fleet management and route optimization system.",
+    "icon": "🚚"
+  },
+  {
+    "id": 7,
+    "title": "Real Estate Portal",
+    "description": "Property listing platform with virtual tour integration.",
+    "icon": "🏠"
+  },
+  {
+    "id": 8,
+    "title": "AI Chatbot",
+    "description": "Customer support automation using NLP and machine learning.",
+    "icon": "🤖"
+  },
+  {
+    "id": 9,
+    "title": "FinTech Wallet",
+    "description": "Secure digital wallet for peer-to-peer payments.",
+    "icon": "💳"
+  }
+]
