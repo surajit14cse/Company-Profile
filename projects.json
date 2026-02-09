@@ -1,56 +1,82 @@
 [
   {
     "id": 1,
-    "title": "Online Pharmacy",
+    "title": "Halalmart100",
     "description": "Digital health platform for medication ordering and delivery.",
-    "icon": "💊"
+    "icon": "Project/halalmart100.png",
+    "isImage": true,
+    "url": "https://techvelly.com"
   },
   {
     "id": 2,
     "title": "Headless E-commerce",
     "description": "Scalable, API-first commerce solution for high-volume retail.",
-    "icon": "🛒"
+    "icon": "🛒",
+    "url": "https://techvelly.com"
   },
   {
     "id": 3,
     "title": "Student Management",
     "description": "Admin dashboard for educational institutions.",
-    "icon": "🎓"
+    "icon": "🎓",
+    "url": "https://techvelly.com"
   },
   {
     "id": 4,
     "title": "E-commerce App",
     "description": "Native mobile experience for seamless shopping.",
-    "icon": "📱"
+    "icon": "📱",
+    "url": "https://techvelly.com"
   },
   {
     "id": 5,
     "title": "Analytics Dashboard",
     "description": "Real-time data visualization platform for enterprise metrics.",
-    "icon": "📊"
+    "icon": "📊",
+    "url": "https://techvelly.com"
   },
   {
     "id": 6,
     "title": "Logistics Tracker",
     "description": "IoT-based fleet management and route optimization system.",
-    "icon": "🚚"
+    "icon": "🚚",
+    "url": "https://techvelly.com"
   },
   {
     "id": 7,
     "title": "Real Estate Portal",
     "description": "Property listing platform with virtual tour integration.",
-    "icon": "🏠"
+    "icon": "🏠",
+    "url": "https://techvelly.com"
   },
   {
     "id": 8,
     "title": "AI Chatbot",
     "description": "Customer support automation using NLP and machine learning.",
-    "icon": "🤖"
+    "icon": "🤖",
+    "url": "https://techvelly.com"
   },
   {
     "id": 9,
     "title": "FinTech Wallet",
     "description": "Secure digital wallet for peer-to-peer payments.",
-    "icon": "💳"
+    "icon": "💳",
+    "url": "https://techvelly.com"
+  },
+  {
+    "id": 10,
+    "title": "Amarosudh",
+    "description": "Bangladesh's leading digital healthcare and pharmacy platform.",
+    "icon": "Project/amarosudh.png",
+    "isImage": true,
+    "url": "https://amarosudh.com"
+  },
+  {
+    "id": 11,
+    "title": "Techvelly ERP",
+    "description": "Advanced enterprise resource planning and accounting solution.",
+    "icon": "Project/ac.techvelly.png",
+    "isImage": true,
+    "url": "https://ac.techvelly.com"
   }
 ]

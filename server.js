@@ -40,7 +40,7 @@ app.get('/api/projects', (req, res) => {
 
 // Add Project
 app.post('/api/projects', upload.single('image'), (req, res) => {
-    const { title, description, iconType, emojiIcon } = req.body;
+    const { title, description, url, iconType, emojiIcon } = req.body;
     let icon = emojiIcon;
     
     // If an image file was uploaded, use its path (relative)
@@ -52,6 +52,7 @@ app.post('/api/projects', upload.single('image'), (req, res) => {
         id: Date.now(),
         title,
         description,
+        url: url || '#',
         icon,
         isImage: !!req.file // Flag to know if it's an image path or emoji
     };
