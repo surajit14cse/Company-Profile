@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Velly - Company Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            200: '#bae0fd',
+                            300: '#7cc2fd',
+                            400: '#36a2fa',
+                            500: '#0c87eb', // Bright Blue
+                            600: '#0069c7',
+                            700: '#0154a3',
+                            800: '#064886',
+                            900: '#0b3d6f', // Deep Navy
+                            950: '#072648', // Almost Black Blue
+                        },
+                        accent: {
+                            400: '#38bdf8', // Sky Blue Accent
+                            500: '#0ea5e9',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'], // Modern Geometric Sans
+                    },
+                    spacing: {
+                        'a4-w': '210mm',
+                        'a4-h': '297mm',
+                    },
+                    backgroundImage: {
+                        'blue-gradient': 'linear-gradient(135deg, #0b3d6f 0%, #0c87eb 100%)',
+                        'tech-grid': 'radial-gradient(#36a2fa 1px, transparent 1px)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* A4 Print Styles */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .page-break {
+                break-after: page;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+        
+        body {
+            background-color: #e2e8f0; 
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            margin: 20px auto;
+            position: relative;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media print {
+            .page {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                width: 100%;
+                height: 100vh;
+            }
+        }
+
+        /* Poster Design Elements */
+        .poster-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(12, 135, 235, 0.1);
+            border: 1px solid #e0effe;
+            transition: transform 0.2s;
+        }
+        .poster-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(12, 135, 235, 0.15);
+            border-color: #36a2fa;
+        }
+
+        .clip-slant {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .tech-dots {
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #0b3d6f;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            color: white;
+            font-size: 0.8rem;
+            z-index: 50;
+        }
+        
+        .page-content {
+            padding: 40px;
+            flex-grow: 1;
+            padding-bottom: 80px; /* Space for footer */
+        }
+
+        h2.section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0b3d6f;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background: #0c87eb;
+            margin-top: 4px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-700 antialiased selection:bg-brand-200">
+
+    <!-- Print Button -->
+    <div class="fixed top-6 right-6 z-50 no-print">
+        <button onclick="window.print()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-6 rounded-full shadow-xl flex items-center gap-3 transition transform hover:scale-105 border-2 border-white ring-2 ring-brand-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            Print / Save as PDF
+        </button>
+    </div>
+
+    <!-- ================= PAGE 1: POSTER COVER ================= -->
+    <div class="page page-break relative bg-blue-gradient text-white flex flex-col justify-center items-center overflow-hidden">
+        <!-- Tech Pattern Background -->
+        <div class="absolute inset-0 bg-tech-grid tech-dots"></div>
+        
+        <!-- Large Circles -->
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-400 opacity-20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
+
+        <div class="z-10 text-center relative w-full max-w-4xl px-8">
+            <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl inline-block mb-12 border border-white/20 shadow-2xl">
+                <img src="image/TechVelly.png" alt="Tech Velly Logo" class="h-40 object-contain mx-auto filter drop-shadow-lg">
+            </div>
+            
+            <h1 class="text-8xl font-black tracking-tighter leading-none mb-6">
+                TECHVELLY<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-200 to-white">PROFILE</span>
+            </h1>
+            
+            <div class="h-1 w-32 bg-brand-400 mx-auto rounded-full mb-8"></div>
+            
+            <p class="text-2xl font-light tracking-widest uppercase text-brand-100">Consulted IT Service & Solution</p>
+        </div>
+
+        <div class="absolute bottom-12 w-full text-center space-y-2 z-10">
+            <p class="text-xl font-bold tracking-wide">WWW.TECHVELLY.COM</p>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 2: SNAPSHOT (DASHBOARD) ================= -->
+    <div class="page page-break relative">
+        <div class="page-content flex flex-col">
+            <div class="flex items-end justify-between mb-12 border-b border-brand-100 pb-4">
+                <h2 class="section-title">At a Glance</h2>
+                <div class="text-brand-300 font-black text-6xl opacity-20">02</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8 flex-grow">
+                <!-- Hero Stat -->
+                <div class="col-span-2 bg-brand-900 text-white rounded-2xl p-8 relative overflow-hidden shadow-xl">
+                    <div class="absolute right-0 top-0 w-64 h-64 bg-brand-500 rounded-full opacity-20 blur-2xl"></div>
+                    <div class="relative z-10">
+                        <div class="text-brand-300 font-bold uppercase tracking-wider text-sm mb-2">Established</div>
+                        <div class="text-5xl font-black mb-4">2024</div>
+                        <p class="text-brand-100 max-w-xl text-lg">Founded in Kuala Lumpur, Malaysia. Rapidly growing into a trusted global partner for enterprise solutions.</p>
+                    </div>
+                </div>
+
+                <!-- Stat Box -->
+                <div class="poster-card p-8 flex flex-col justify-center items-center text-center">
+                    <div class="text-6xl font-black text-brand-500 mb-2">20+</div>
+                    <div class="text-slate-500 font-bold uppercase tracking-wide">Expert Engineers</div>
+                </div>
+
+                <!-- Stat Box -->
+                <div class="poster-card p-8 flex flex-col justify-center items-center text-center">
+                    <div class="text-6xl font-black text-brand-500 mb-2">3</div>
+                    <div class="text-slate-500 font-bold uppercase tracking-wide">Continents Served</div>
+                    <div class="text-xs text-brand-400 mt-2 font-semibold">Asia • Europe • Americas</div>
+                </div>
+
+                <!-- Certs Horizontal -->
+                <div class="col-span-2 bg-brand-50 rounded-2xl p-6 flex justify-around items-center border border-brand-100">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xl font-bold">✓</div>
+                        <div>
+                            <div class="font-bold text-slate-800">GDPR Compliant</div>
+                            <div class="text-xs text-slate-500">Data Privacy</div>
+                        </div>
+                    </div>
+                    <div class="h-10 w-px bg-brand-200"></div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-xl font-bold">✓</div>
+                        <div>
+                            <div class="font-bold text-slate-800">ISO Ready</div>
+                            <div class="text-xs text-slate-500">Quality Assurance</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 02</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 3: CORE VALUES (Vision & Mission) ================= -->
+    <div class="page page-break relative">
+        <div class="h-2/5 bg-brand-900 relative overflow-hidden flex items-center px-12">
+            <div class="absolute inset-0 bg-tech-grid opacity-20"></div>
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div class="relative z-10 w-full">
+                 <h2 class="text-sm font-black text-brand-400 uppercase tracking-[0.4em] mb-4">Our Vision</h2>
+                 <p class="text-3xl text-white font-bold leading-tight max-w-2xl">
+                    "Make Technology an asset for Our Clients & not a Problem! To be the most innovative IT partner known for translating technologies into <span class="text-brand-400">Agile Solutions</span> that add real value."
+                 </p>
+            </div>
+        </div>
+
+        <div class="page-content pt-12">
+            <div class="flex gap-12">
+                <!-- Who We Are -->
+                <div class="w-1/2 pr-8 border-r border-slate-100">
+                    <h3 class="text-2xl font-black text-brand-900 mb-6 uppercase tracking-tight">Who We Are</h3>
+                    <p class="text-slate-600 leading-relaxed text-justify mb-8 text-sm">
+                        Techvelly is a dynamic software development company dedicated to delivering cutting-edge, scalable, and secure software solutions to startups and enterprises around the world. We simplify complex business processes through tailored digital innovations.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center text-brand-500 font-bold group-hover:bg-brand-500 group-hover:text-white transition shadow-sm">01</div>
+                            <span class="font-bold text-slate-700 text-sm">Innovation First</span>
+                        </div>
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center text-brand-500 font-bold group-hover:bg-brand-500 group-hover:text-white transition shadow-sm">02</div>
+                            <span class="font-bold text-slate-700 text-sm">Integrity & Trust</span>
+                        </div>
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center text-brand-500 font-bold group-hover:bg-brand-500 group-hover:text-white transition shadow-sm">03</div>
+                            <span class="font-bold text-slate-700 text-sm">Client Empowerment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission -->
+                <div class="w-1/2">
+                     <h3 class="text-2xl font-black text-brand-900 mb-6 uppercase tracking-tight">Our Mission</h3>
+                     <div class="bg-brand-50 p-6 rounded-2xl border-l-4 border-brand-500 mb-8 shadow-sm">
+                        <p class="text-slate-700 font-medium italic leading-relaxed text-sm">
+                            "To provide turnkey IT Solutions through a proficient & motivated team using their skills & cutting-edge technology to maintain growth & stability to the organization."
+                        </p>
+                     </div>
+                     
+                     <h3 class="text-lg font-black text-slate-800 mb-4 uppercase tracking-wider">Core Value Add</h3>
+                     <div class="grid grid-cols-1 gap-3">
+                         <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100 hover:border-brand-300 transition">
+                            <span class="text-brand-500">✔</span>
+                            <span class="text-xs font-bold text-slate-600 uppercase">Lower IT Development Costs</span>
+                         </div>
+                         <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100 hover:border-brand-300 transition">
+                            <span class="text-brand-500">✔</span>
+                            <span class="text-xs font-bold text-slate-600 uppercase">Increase Efficiency & Productivity</span>
+                         </div>
+                         <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100 hover:border-brand-300 transition">
+                            <span class="text-brand-500">✔</span>
+                            <span class="text-xs font-bold text-slate-600 uppercase">Secured Business Platforms</span>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 03</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 4: LEADERSHIP (Premium Cards) ================= -->
+    <div class="page page-break relative">
+        <div class="page-content flex flex-col">
+            <div class="flex items-end justify-between mb-10 border-b border-brand-100 pb-4">
+                <h2 class="section-title">Leadership Team</h2>
+                <div class="text-brand-300 font-black text-6xl opacity-20">04</div>
+            </div>
+
+            <!-- Management Tier -->
+            <div class="grid grid-cols-2 gap-8 mb-12 max-w-2xl mx-auto w-full">
+                <!-- Marketing Head -->
+                <div class="poster-card p-8 flex flex-col items-center text-center group">
+                    <div class="w-40 h-40 rounded-full bg-slate-100 mb-4 overflow-hidden border-4 border-brand-500 group-hover:scale-105 transition-transform duration-300 relative shadow-inner">
+                        <img src="profile image/Tamjidul Alam.png" alt="Md. Tamjidul Alam" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Tamjidul+Alam&background=0b3d6f&color=fff'">
+                    </div>
+                    <h3 class="font-bold text-brand-900 text-xl leading-tight">Md. Tamjidul Alam</h3>
+                    <div class="text-sm font-black text-brand-500 uppercase tracking-widest mt-1">Head of Marketing & BD</div>
+                </div>
+
+                <!-- BDM -->
+                <div class="poster-card p-8 flex flex-col items-center text-center group">
+                    <div class="w-40 h-40 rounded-full bg-slate-100 mb-4 overflow-hidden border-4 border-brand-500 group-hover:scale-105 transition-transform duration-300 relative shadow-inner">
+                        <img src="profile image/Surajit Biswas.png" alt="Eng. Surajit Biswas" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Surajit+Biswas&background=0b3d6f&color=fff'">
+                    </div>
+                    <h3 class="font-bold text-brand-900 text-xl leading-tight">Eng. Surajit Biswas</h3>
+                    <div class="text-sm font-black text-brand-500 uppercase tracking-widest mt-1">Business Development Mgr</div>
+                </div>
+            </div>
+
+            <!-- Tech & Operations Tier -->
+            <div class="grid grid-cols-4 gap-4">
+                <!-- Developer 1 -->
+                <div class="poster-card p-4 flex flex-col items-center text-center group">
+                    <div class="w-24 h-24 rounded-full bg-slate-50 mb-3 overflow-hidden border-2 border-slate-200 group-hover:border-brand-300 transition relative">
+                        <img src="profile image\Tarit.png" alt="Tarit" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Tarit&background=e2e8f0&color=64748b'">
+                    </div>
+                    <h4 class="font-bold text-brand-900 text-sm leading-tight">Tarit</h4>
+                    <div class="text-[10px] text-slate-500 uppercase font-bold">Web Developer</div>
+                </div>
+
+                <div class="poster-card p-4 flex flex-col items-center text-center group">
+                    <div class="w-24 h-24 rounded-full bg-slate-50 mb-3 overflow-hidden border-2 border-slate-200 group-hover:border-brand-300 transition relative">
+                        <img src="profile image/Rafid Al Nahiyan.png" alt="Rafid Al Nahiyan" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Rafid+Nahiyan&background=e2e8f0&color=64748b'">
+                    </div>
+                    <h4 class="font-bold text-brand-900 text-sm leading-tight">Rafid Al Nahiyan</h4>
+                    <div class="text-[10px] text-slate-500 uppercase font-bold">Web Developer</div>
+                </div>
+
+                <!-- Developer 2 -->
+                <div class="poster-card p-4 flex flex-col items-center text-center group">
+                    <div class="w-24 h-24 rounded-full bg-slate-50 mb-3 overflow-hidden border-2 border-slate-200 group-hover:border-brand-300 transition relative">
+                        <img src="profile image/Hasibur Rahman Hasib.png" alt="Hasibur Rahman Hasib" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Hasibur+Rahman&background=e2e8f0&color=64748b'">
+                    </div>
+                    <h4 class="font-bold text-brand-900 text-sm leading-tight">Hasibur Rahman Hasib</h4>
+                    <div class="text-[10px] text-slate-500 uppercase font-bold">Web Developer</div>
+                </div>
+
+                <!-- Developer 3 -->
+                <div class="poster-card p-4 flex flex-col items-center text-center group">
+                    <div class="w-24 h-24 rounded-full bg-slate-50 mb-3 overflow-hidden border-2 border-slate-200 group-hover:border-brand-300 transition relative">
+                        <img src="profile image/Moin Uddin.png" alt="Moin Uddin" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Moin+Uddin&background=e2e8f0&color=64748b'">
+                    </div>
+                    <h4 class="font-bold text-brand-900 text-sm leading-tight">Moin Uddin</h4>
+                    <div class="text-[10px] text-slate-500 uppercase font-bold">Web Developer</div>
+                </div>
+
+                <!-- Marketing -->
+                <div class="poster-card p-4 flex flex-col items-center text-center group">
+                    <div class="w-24 h-24 rounded-full bg-slate-50 mb-3 overflow-hidden border-2 border-slate-200 group-hover:border-brand-300 transition relative">
+                        <img src="profile image/Dinesh Sarkar.png" alt="Dinesh Sarkar" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Dinesh+Sarkar&background=e2e8f0&color=64748b'">
+                    </div>
+                    <h4 class="font-bold text-brand-900 text-sm leading-tight">Dinesh Sarkar</h4>
+                    <div class="text-[10px] text-slate-500 uppercase font-bold">Marketing Officer</div>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 04</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 5: SERVICES (Visual Grid) ================= -->
+    <div class="page page-break relative">
+        <div class="page-content flex flex-col">
+            <div class="flex items-end justify-between mb-8 border-b border-brand-100 pb-4">
+                <h2 class="section-title">Our Services</h2>
+                <div class="text-brand-300 font-black text-6xl opacity-20">05</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Web Dev -->
+                <div class="poster-card overflow-hidden flex flex-col h-48 border-l-4 border-l-brand-500 group">
+                    <div class="flex h-full">
+                        <div class="w-1/3 h-full overflow-hidden">
+                            <img src="image/services/web.jpg" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h3 class="font-bold text-brand-900 mb-1">Web Development</h3>
+                            <p class="text-[10px] text-slate-500 leading-tight">PHP, .NET, Python, Java. Scalable enterprise web applications.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI -->
+                <div class="poster-card overflow-hidden flex flex-col h-48 border-l-4 border-l-brand-400 group">
+                    <div class="flex h-full">
+                        <div class="w-1/3 h-full overflow-hidden">
+                            <img src="image/services/ai.jpg" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h3 class="font-bold text-brand-900 mb-1">AI Solutions</h3>
+                            <p class="text-[10px] text-slate-500 leading-tight">Predictive insights, automation, NLP chatbots, and ML models.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile -->
+                <div class="poster-card overflow-hidden flex flex-col h-48 border-l-4 border-l-brand-500 group">
+                    <div class="flex h-full">
+                        <div class="w-1/3 h-full overflow-hidden">
+                            <img src="image/services/mobile.jpg" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h3 class="font-bold text-brand-900 mb-1">Mobile Apps</h3>
+                            <p class="text-[10px] text-slate-500 leading-tight">iOS, Android, Hybrid, AR & VR Apps with seamless UX.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud -->
+                <div class="poster-card overflow-hidden flex flex-col h-48 border-l-4 border-l-brand-400 group">
+                    <div class="flex h-full">
+                        <div class="w-1/3 h-full overflow-hidden">
+                            <img src="image/services/cloud.jpg" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h3 class="font-bold text-brand-900 mb-1">Cloud & DevOps</h3>
+                            <p class="text-[10px] text-slate-500 leading-tight">CI/CD, AWS/Azure, Infrastructure as Code, Cost Optimization.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SaaS -->
+                <div class="poster-card overflow-hidden flex flex-col h-48 border-l-4 border-l-brand-500 group">
+                    <div class="flex h-full">
+                        <div class="w-1/3 h-full overflow-hidden">
+                            <img src="image/services/saas.jpg" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h3 class="font-bold text-brand-900 mb-1">SaaS Engineering</h3>
+                            <p class="text-[10px] text-slate-500 leading-tight">Multi-tenant architecture, end-to-end product development.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EduTech -->
+                <div class="poster-card overflow-hidden flex flex-col h-48 border-l-4 border-l-brand-400 group">
+                    <div class="flex h-full">
+                        <div class="w-1/3 h-full overflow-hidden">
+                            <img src="image/services/edutech.jpg" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h3 class="font-bold text-brand-900 mb-1">EduTech</h3>
+                            <p class="text-[10px] text-slate-500 leading-tight">LMS, Virtual Classrooms, Secure student data management.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UI/UX -->
+                <div class="poster-card overflow-hidden flex flex-col h-48 border-l-4 border-l-brand-500 group">
+                    <div class="flex h-full">
+                        <div class="w-1/3 h-full overflow-hidden">
+                            <img src="image/services/uiux.jpg" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h3 class="font-bold text-brand-900 mb-1">UI/UX Design</h3>
+                            <p class="text-[10px] text-slate-500 leading-tight">User research, interactive prototyping, accessibility compliance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consulting -->
+                <div class="poster-card overflow-hidden flex flex-col h-48 border-l-4 border-l-brand-400 group">
+                    <div class="flex h-full">
+                        <div class="w-1/3 h-full overflow-hidden">
+                            <img src="image/services/consulting.jpg" class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="w-2/3 p-4">
+                            <h3 class="font-bold text-brand-900 mb-1">IT Consulting</h3>
+                            <p class="text-[10px] text-slate-500 leading-tight">Digital transformation, cybersecurity, and strategic planning.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 05</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 6: TECH STACK (Layered Architecture) ================= -->
+    <div class="page page-break relative bg-slate-50">
+        <div class="page-content flex flex-col">
+            <div class="flex items-end justify-between mb-10 border-b border-brand-100 pb-4">
+                <h2 class="section-title">Technology Stack</h2>
+                <div class="text-brand-300 font-black text-6xl opacity-20">06</div>
+            </div>
+
+            <div class="space-y-6 flex-grow">
+                <!-- Layer 1: Frontend -->
+                <div class="relative group">
+                    <div class="absolute -left-2 top-0 bottom-0 w-1 bg-accent-400 rounded-full"></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                        <h3 class="text-sm font-black text-slate-400 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                            <span class="w-2 h-2 bg-accent-400 rounded-full"></span> Experience Layer
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-slate-50 text-slate-700 font-bold rounded-lg border border-slate-200 text-sm">React</span>
+                            <span class="px-4 py-2 bg-slate-50 text-slate-700 font-bold rounded-lg border border-slate-200 text-sm">Angular</span>
+                            <span class="px-4 py-2 bg-slate-50 text-slate-700 font-bold rounded-lg border border-slate-200 text-sm">Vue.js</span>
+                            <span class="px-4 py-2 bg-slate-50 text-slate-700 font-bold rounded-lg border border-slate-200 text-sm">Tailwind CSS</span>
+                            <span class="px-4 py-2 bg-brand-50 text-brand-600 font-bold rounded-lg border border-brand-100 text-sm">Flutter</span>
+                            <span class="px-4 py-2 bg-brand-50 text-brand-600 font-bold rounded-lg border border-brand-100 text-sm">Swift / Kotlin</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layer 2: Backend -->
+                <div class="relative group">
+                    <div class="absolute -left-2 top-0 bottom-0 w-1 bg-brand-500 rounded-full"></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                        <h3 class="text-sm font-black text-slate-400 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                            <span class="w-2 h-2 bg-brand-500 rounded-full"></span> Logic & Service Layer
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-brand-900 text-white font-bold rounded-lg text-sm">.NET Core</span>
+                            <span class="px-4 py-2 bg-brand-900 text-white font-bold rounded-lg text-sm">Node.js</span>
+                            <span class="px-4 py-2 bg-brand-900 text-white font-bold rounded-lg text-sm">Python / Django</span>
+                            <span class="px-4 py-2 bg-brand-900 text-white font-bold rounded-lg text-sm">Spring Boot</span>
+                            <span class="px-4 py-2 bg-brand-900 text-white font-bold rounded-lg text-sm">PHP / Laravel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layer 3: Infrastructure -->
+                <div class="relative group">
+                    <div class="absolute -left-2 top-0 bottom-0 w-1 bg-brand-900 rounded-full"></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                        <h3 class="text-sm font-black text-slate-400 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                            <span class="w-2 h-2 bg-brand-900 rounded-full"></span> Foundation Layer
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-black text-brand-500 uppercase">Cloud & DevOps</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded">AWS</span>
+                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded">Azure</span>
+                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded">Docker</span>
+                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded">Kubernetes</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-black text-brand-500 uppercase">Data & Storage</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded">PostgreSQL</span>
+                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded">MongoDB</span>
+                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded">Redis</span>
+                                    <span class="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded">MSSQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Agile Process Footer -->
+            <div class="mt-8 bg-brand-900 rounded-3xl p-8 text-white relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+                </div>
+                <h3 class="text-xl font-black mb-6 flex items-center gap-3">
+                    <span class="w-8 h-1 bg-brand-400"></span> AGILE PROCESS
+                </h3>
+                <div class="flex justify-between items-center max-w-lg mx-auto relative">
+                    <!-- Connector Line -->
+                    <div class="absolute top-1/2 left-0 right-0 h-0.5 bg-brand-700 -translate-y-1/2 z-0"></div>
+                    
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <div class="w-10 h-10 bg-brand-500 rounded-full flex items-center justify-center font-bold shadow-lg ring-4 ring-brand-900">1</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-brand-300">Backlog</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <div class="w-10 h-10 bg-brand-500 rounded-full flex items-center justify-center font-bold shadow-lg ring-4 ring-brand-900">2</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-brand-300">Sprint</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <div class="w-10 h-10 bg-brand-500 rounded-full flex items-center justify-center font-bold shadow-lg ring-4 ring-brand-900">3</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-brand-300">Test</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <div class="w-10 h-10 bg-white text-brand-900 rounded-full flex items-center justify-center font-bold shadow-lg ring-4 ring-brand-900">4</div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-white">Release</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 06</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 7: INDUSTRIES ================= -->
+    <div class="page page-break relative">
+        <div class="page-content flex flex-col">
+            <div class="flex items-end justify-between mb-10 border-b border-brand-100 pb-4">
+                <h2 class="section-title">Industries</h2>
+                <div class="text-brand-300 font-black text-6xl opacity-20">07</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+                <div class="poster-card p-6 flex items-start gap-4">
+                    <div class="bg-blue-100 text-blue-600 p-3 rounded-lg font-bold text-xl">Fin</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">FinTech</h4>
+                        <p class="text-sm text-slate-500">Payments, Lending, Banking.</p>
+                    </div>
+                </div>
+                <div class="poster-card p-6 flex items-start gap-4">
+                    <div class="bg-green-100 text-green-600 p-3 rounded-lg font-bold text-xl">Edu</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">Education</h4>
+                        <p class="text-sm text-slate-500">LMS, Virtual Classes.</p>
+                    </div>
+                </div>
+                <div class="poster-card p-6 flex items-start gap-4">
+                    <div class="bg-orange-100 text-orange-600 p-3 rounded-lg font-bold text-xl">Log</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">Logistics</h4>
+                        <p class="text-sm text-slate-500">Fleet, Tracking, Routes.</p>
+                    </div>
+                </div>
+                <div class="poster-card p-6 flex items-start gap-4">
+                    <div class="bg-red-100 text-red-600 p-3 rounded-lg font-bold text-xl">Hlt</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">Healthcare</h4>
+                        <p class="text-sm text-slate-500">Telemedicine, Patient Data.</p>
+                    </div>
+                </div>
+                <div class="poster-card p-6 flex items-start gap-4">
+                    <div class="bg-purple-100 text-purple-600 p-3 rounded-lg font-bold text-xl">Ecom</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">E-Commerce</h4>
+                        <p class="text-sm text-slate-500">Shops, Inventory, Payments.</p>
+                    </div>
+                </div>
+                 <div class="poster-card p-6 flex items-start gap-4">
+                    <div class="bg-yellow-100 text-yellow-600 p-3 rounded-lg font-bold text-xl">Est</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">Real Estate</h4>
+                        <p class="text-sm text-slate-500">Portals, Virtual Tours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 07</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 7.2: FULL STACK DEVELOPMENT ================= -->
+    <div class="page page-break relative bg-slate-50">
+        <div class="page-content flex flex-col">
+            <div class="flex items-end justify-between mb-8 border-b border-brand-100 pb-4">
+                <h2 class="section-title">Full Stack Development</h2>
+                <div class="text-brand-300 font-black text-6xl opacity-20">08</div>
+            </div>
+
+            <div class="bg-brand-900 text-white p-6 rounded-2xl mb-8 shadow-lg relative overflow-hidden">
+                <div class="absolute right-0 top-0 w-32 h-32 bg-brand-500 rounded-full opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+                <p class="relative z-10 text-brand-100 leading-relaxed text-lg italic">
+                    "End-to-End solutions, from pixel-perfect interfaces to robust server architectures."
+                </p>
+            </div>
+
+            <div class="relative flex-grow">
+                <!-- Vertical Connector Line -->
+                <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-brand-500 via-brand-300 to-brand-500 -translate-x-1/2 opacity-20 hidden md:block"></div>
+
+                <div class="grid grid-cols-2 gap-x-16 gap-y-8 relative z-10">
+                    <!-- FrontEnd -->
+                    <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-brand-500 relative">
+                        <div class="absolute -right-10 top-1/2 w-4 h-4 bg-brand-500 rounded-full border-4 border-white hidden md:block"></div>
+                        <h3 class="text-xl font-bold text-brand-900 mb-4 flex items-center gap-3">
+                            <span class="text-2xl">🎨</span> Frontend
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between bg-slate-50 p-2 rounded">
+                                <span class="font-bold text-sm">Frameworks</span>
+                                <span class="text-xs text-brand-500 font-black">REACT • ANGULAR</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-slate-50 p-2 rounded">
+                                <span class="font-bold text-sm">Styling</span>
+                                <span class="text-xs text-brand-500 font-black">TAILWIND • SASS</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-slate-50 p-2 rounded">
+                                <span class="font-bold text-sm">Mobile</span>
+                                <span class="text-xs text-brand-500 font-black">FLUTTER • XAMARIN</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BackEnd -->
+                    <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-brand-900 relative mt-12">
+                        <div class="absolute -left-10 top-1/2 w-4 h-4 bg-brand-900 rounded-full border-4 border-white hidden md:block"></div>
+                        <h3 class="text-xl font-bold text-brand-900 mb-4 flex items-center gap-3">
+                            <span class="text-2xl">⚙️</span> Backend
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between bg-slate-50 p-2 rounded">
+                                <span class="font-bold text-sm">Runtime</span>
+                                <span class="text-xs text-brand-900 font-black">NODE.JS • .NET</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-slate-50 p-2 rounded">
+                                <span class="font-bold text-sm">Language</span>
+                                <span class="text-xs text-brand-900 font-black">PYTHON • C#</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-slate-50 p-2 rounded">
+                                <span class="font-bold text-sm">Architecture</span>
+                                <span class="text-xs text-brand-900 font-black">REST • GRAPHQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database -->
+                    <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-brand-500 relative">
+                        <div class="absolute -right-10 top-1/2 w-4 h-4 bg-brand-500 rounded-full border-4 border-white hidden md:block"></div>
+                        <h3 class="text-xl font-bold text-brand-900 mb-4 flex items-center gap-3">
+                            <span class="text-2xl">💾</span> Database
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between bg-slate-50 p-2 rounded">
+                                <span class="font-bold text-sm">Relational</span>
+                                <span class="text-xs text-brand-500 font-black">MSSQL • POSTGRES</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-slate-50 p-2 rounded">
+                                <span class="font-bold text-sm">NoSQL</span>
+                                <span class="text-xs text-brand-500 font-black">MONGODB • REDIS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cloud -->
+                    <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-brand-900 relative mt-12">
+                        <div class="absolute -left-10 top-1/2 w-4 h-4 bg-brand-900 rounded-full border-4 border-white hidden md:block"></div>
+                        <h3 class="text-xl font-bold text-brand-900 mb-4 flex items-center gap-3">
+                            <span class="text-2xl">☁️</span> Infrastructure
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between bg-slate-50 p-2 rounded">
+                                <span class="font-bold text-sm">Cloud</span>
+                                <span class="text-xs text-brand-900 font-black">AWS • AZURE</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-slate-50 p-2 rounded">
+                                <span class="font-bold text-sm">DevOps</span>
+                                <span class="text-xs text-brand-900 font-black">DOCKER • CI/CD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-brand-50 p-4 rounded-xl border border-brand-100 text-center">
+                <span class="text-xs font-black text-brand-900 uppercase tracking-[0.3em]">Scalable • Secure • High-Performance Solutions</span>
+            </div>
+        </div>
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 08</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 7.3: CERTIFICATIONS & PARTNERSHIPS ================= -->
+    <div class="page page-break relative">
+        <div class="page-content flex flex-col">
+            <div class="flex items-end justify-between mb-10 border-b border-brand-100 pb-4">
+                <h2 class="section-title">Certifications</h2>
+                <div class="text-brand-300 font-black text-6xl opacity-20">09</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-brand-50 p-6 rounded-2xl border border-brand-100">
+                    <h3 class="text-xl font-bold text-brand-900 mb-3 uppercase tracking-tight">GDPR Compliant</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Adhering to the EU's General Data Protection Regulation, ensuring personal data is collected, processed, and stored lawfully, transparently, and securely.
+                    </p>
+                </div>
+
+                <div class="bg-brand-50 p-6 rounded-2xl border border-brand-100">
+                    <h3 class="text-xl font-bold text-brand-900 mb-3 uppercase tracking-tight">ISO 27001 Compliance</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Global standards for managing information security, protecting data, and mitigating risks through a structured Security Management System.
+                    </p>
+                </div>
+
+                <div class="bg-brand-50 p-6 rounded-2xl border border-brand-100">
+                    <h3 class="text-xl font-bold text-brand-900 mb-3 uppercase tracking-tight">AWS Partner Network</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Member of the global community of partners that leverage AWS to build solutions and services, helping customers innovate and scale using cloud technology.
+                    </p>
+                </div>
+
+                <div class="bg-brand-50 p-6 rounded-2xl border border-brand-100">
+                    <h3 class="text-xl font-bold text-brand-900 mb-3 uppercase tracking-tight">Member – BASIS</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Member of the Bangladesh Association of Software and Information Services, contributing to the growth of the IT sector through innovation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-auto bg-brand-900 p-8 rounded-3xl text-white flex items-center justify-between shadow-xl">
+                <div>
+                    <h3 class="text-2xl font-black mb-1">TRUSTED BY LEADERS</h3>
+                    <p class="text-brand-200 text-sm">Delivering quality and security in every line of code.</p>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center font-bold">AWS</div>
+                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center font-bold">ISO</div>
+                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center font-bold">EU</div>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 09</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 7.4: ENGAGEMENT MODELS (Modern Redesign) ================= -->
+    <div class="page page-break relative bg-slate-50">
+        <div class="page-content flex flex-col">
+            <div class="flex items-end justify-between mb-12 border-b border-brand-100 pb-4">
+                <h2 class="section-title">Engagement Models</h2>
+                <div class="text-brand-300 font-black text-6xl opacity-20">10</div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6 mb-12">
+                <!-- Model 1 -->
+                <div class="poster-card p-6 bg-white flex flex-col items-center text-center group border-t-8 border-brand-500">
+                    <div class="w-16 h-16 bg-brand-50 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:rotate-12 transition-transform">💰</div>
+                    <h3 class="text-lg font-black text-brand-900 uppercase tracking-tight mb-3">Fixed Price</h3>
+                    <p class="text-[10px] text-slate-500 leading-relaxed uppercase font-bold">Best for well-defined projects with fixed budgets and strict timelines.</p>
+                    <div class="mt-auto pt-6 w-full">
+                        <div class="h-1 w-full bg-brand-100 rounded-full">
+                            <div class="h-full w-1/3 bg-brand-500 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model 2 -->
+                <div class="poster-card p-6 bg-brand-900 text-white flex flex-col items-center text-center group border-t-8 border-brand-400 shadow-2xl scale-105 z-10">
+                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">⏳</div>
+                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-3">Time & Material</h3>
+                    <p class="text-[10px] text-brand-200 leading-relaxed uppercase font-bold">Maximum flexibility for projects with evolving scope and requirements.</p>
+                    <div class="mt-auto pt-6 w-full">
+                        <div class="h-1 w-full bg-white/10 rounded-full">
+                            <div class="h-full w-2/3 bg-brand-400 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model 3 -->
+                <div class="poster-card p-6 bg-white flex flex-col items-center text-center group border-t-8 border-brand-500">
+                    <div class="w-16 h-16 bg-brand-50 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:-rotate-12 transition-transform">👥</div>
+                    <h3 class="text-lg font-black text-brand-900 uppercase tracking-tight mb-3">Dedicated Team</h3>
+                    <p class="text-[10px] text-slate-500 leading-relaxed uppercase font-bold">A long-term partnership with a specialized team focused on your product.</p>
+                    <div class="mt-auto pt-6 w-full">
+                        <div class="h-1 w-full bg-brand-100 rounded-full">
+                            <div class="h-full w-full bg-brand-500 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sleek Process Timeline -->
+            <div class="relative mt-auto pt-12 pb-8">
+                <div class="absolute left-0 right-0 top-1/2 h-px bg-slate-200 -translate-y-1/2"></div>
+                <div class="grid grid-cols-4 gap-4 relative z-10">
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 bg-white border-2 border-brand-500 rounded-full flex items-center justify-center text-brand-500 font-black text-xs shadow-sm mb-4">01</div>
+                        <h4 class="text-[10px] font-black text-brand-900 uppercase tracking-widest">Discovery</h4>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 bg-white border-2 border-brand-500 rounded-full flex items-center justify-center text-brand-500 font-black text-xs shadow-sm mb-4">02</div>
+                        <h4 class="text-[10px] font-black text-brand-900 uppercase tracking-widest">Proposal</h4>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-white font-black text-xs shadow-lg mb-4 ring-4 ring-white">03</div>
+                        <h4 class="text-[10px] font-black text-brand-900 uppercase tracking-widest">Execution</h4>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 bg-white border-2 border-brand-500 rounded-full flex items-center justify-center text-brand-500 font-black text-xs shadow-sm mb-4">04</div>
+                        <h4 class="text-[10px] font-black text-brand-900 uppercase tracking-widest">Delivery</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-brand-50 p-4 rounded-xl text-center">
+                <p class="text-[9px] font-bold text-brand-600 uppercase tracking-[0.3em]">Tailored Engagement Models for Every Business Need</p>
+            </div>
+        </div>
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 10</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 7.5: TESTIMONIALS & ESG ================= -->
+    <div class="page page-break relative">
+        <div class="page-content flex flex-col">
+            <div class="flex items-end justify-between mb-8 border-b border-brand-100 pb-4">
+                <h2 class="section-title">Testimonials & ESG</h2>
+                <div class="text-brand-300 font-black text-6xl opacity-20">11</div>
+            </div>
+
+            <div class="space-y-6 mb-10">
+                <div class="bg-slate-50 p-6 rounded-2xl relative italic text-slate-700 border-l-4 border-brand-500">
+                    "Teachvelly delivered beyond expectations. Their team was proactive, fast, and highly skilled."
+                    <div class="not-italic font-bold text-brand-900 mt-3">— James K., CEO, HealthBridge USA</div>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl relative italic text-slate-700 border-l-4 border-brand-500">
+                    "Professional and reliable. We consider them our long-term partners."
+                    <div class="not-italic font-bold text-brand-900 mt-3">— Ariful Islam Polash, CEO, Amarosudh BD</div>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-black text-brand-900 mb-6 uppercase tracking-tight">Sustainability & ESG</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="flex items-center gap-4 p-4 bg-brand-50 rounded-xl">
+                    <div class="text-2xl">🌍</div>
+                    <div class="text-xs font-bold text-slate-700">Remote-first operations reduce carbon footprint.</div>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-brand-50 rounded-xl">
+                    <div class="text-2xl">⚡</div>
+                    <div class="text-xs font-bold text-slate-700">Energy-efficient cloud hosting (AWS Green).</div>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-brand-50 rounded-xl">
+                    <div class="text-2xl">📄</div>
+                    <div class="text-xs font-bold text-slate-700">Paperless administration & documentation.</div>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-brand-50 rounded-xl">
+                    <div class="text-2xl">⚖️</div>
+                    <div class="text-xs font-bold text-slate-700">Ethical AI and inclusive hiring policies.</div>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 11</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 7.6: KPIs & METRICS (High Contrast Fix) ================= -->
+    <div class="page page-break relative bg-white">
+        <div class="page-content flex flex-col">
+            <div class="flex items-end justify-between mb-12 border-b border-brand-100 pb-4">
+                <h2 class="section-title">Performance Metrics</h2>
+                <div class="text-brand-300 font-black text-6xl opacity-20">12</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8 flex-grow">
+                <!-- Stat 1 -->
+                <div class="poster-card p-10 flex flex-col justify-center items-center text-center bg-brand-50 border-brand-200">
+                    <div class="text-7xl font-black text-brand-900 mb-2">75+</div>
+                    <div class="text-sm font-black uppercase tracking-[0.2em] text-brand-500">Projects Delivered</div>
+                    <div class="w-12 h-1 bg-brand-300 mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="poster-card p-10 flex flex-col justify-center items-center text-center">
+                    <div class="text-7xl font-black text-brand-600 mb-2">90%</div>
+                    <div class="text-sm font-black uppercase tracking-[0.2em] text-slate-500">Client Retention</div>
+                    <div class="w-12 h-1 bg-slate-200 mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="poster-card p-10 flex flex-col justify-center items-center text-center">
+                    <div class="text-7xl font-black text-brand-600 mb-2">4-8</div>
+                    <div class="text-sm font-black uppercase tracking-[0.2em] text-slate-500">Avg. Weeks Delivery</div>
+                    <div class="w-12 h-1 bg-slate-200 mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="poster-card p-10 flex flex-col justify-center items-center text-center bg-brand-900 text-white border-brand-900 shadow-2xl">
+                    <div class="text-7xl font-black text-brand-400 mb-2">99.9%</div>
+                    <div class="text-sm font-black uppercase tracking-[0.2em] text-brand-200">Uptime SLA</div>
+                    <div class="w-12 h-1 bg-brand-500 mt-4 rounded-full"></div>
+                </div>
+            </div>
+
+            <div class="mt-12 p-8 bg-slate-50 rounded-3xl border border-slate-100 flex justify-between items-center">
+                <div>
+                    <h4 class="text-brand-900 font-black uppercase tracking-widest text-lg">Global Reach</h4>
+                    <p class="text-slate-500 text-sm">Serving clients across 3 major continents.</p>
+                </div>
+                <div class="flex gap-3">
+                    <span class="px-3 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold text-slate-600">ASIA PACIFIC</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold text-slate-600">USA & UK</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold text-slate-600">EUROPE</span>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 12</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 7.7: FAQs ================= -->
+    <div class="page page-break relative">
+        <div class="page-content flex flex-col">
+            <div class="flex items-end justify-between mb-10 border-b border-brand-100 pb-4">
+                <h2 class="section-title">Common FAQs</h2>
+                <div class="text-brand-300 font-black text-6xl opacity-20">13</div>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <h4 class="font-bold text-brand-900 flex items-center gap-3">
+                        <span class="text-brand-500">Q.</span> Do you work with international clients?
+                    </h4>
+                    <p class="text-sm text-slate-500 mt-1 pl-7">Yes, we primarily serve clients in the USA, Europe, and Asia Pacific.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-brand-900 flex items-center gap-3">
+                        <span class="text-brand-500">Q.</span> What project management methods do you use?
+                    </h4>
+                    <p class="text-sm text-slate-500 mt-1 pl-7">We use Agile, Scrum, and Lean methodologies tailored to project needs.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-brand-900 flex items-center gap-3">
+                        <span class="text-brand-500">Q.</span> Do you sign NDAs and ensure data protection?
+                    </h4>
+                    <p class="text-sm text-slate-500 mt-1 pl-7">Absolutely. We follow GDPR, sign NDAs, and use secured infrastructure.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-brand-900 flex items-center gap-3">
+                        <span class="text-brand-500">Q.</span> What support do you provide after delivery?
+                    </h4>
+                    <p class="text-sm text-slate-500 mt-1 pl-7">Bug fixes, feature updates, and security patches are available via support plans.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-brand-900 flex items-center gap-3">
+                        <span class="text-brand-500">Q.</span> What is your onboarding process?
+                    </h4>
+                    <p class="text-sm text-slate-500 mt-1 pl-7">Discovery → Proposal → Contract → Design → Development → QA → Launch.</p>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer">
+            <div class="font-bold tracking-widest">TECH VELLY</div>
+            <div>PAGE 13</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 8: MAJOR PROJECTS (Dynamic) ================= -->
+    <!-- Template for Major Projects Page -->
+    <template id="project-page-template">
+        <div class="page page-break relative bg-brand-950 text-white major-project-page">
+            <div class="page-content flex flex-col">
+                <div class="flex items-end justify-between mb-10 border-b border-brand-700 pb-4">
+                    <h2 class="section-title text-white">Major Projects</h2>
+                    <div class="text-brand-500 font-black text-6xl opacity-20 page-number">14</div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6 flex-grow project-grid">
+                    <!-- Projects injected here -->
+                </div>
+            </div>
+            <div class="page-footer">
+                <div class="font-bold tracking-widest">TECH VELLY</div>
+                <div class="footer-page-number">PAGE 14</div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Container for Project Pages -->
+    <div id="project-pages-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('project-pages-container');
+            const template = document.getElementById('project-page-template');
+            
+            try {
+                // Fetch projects from backend
+                const response = await fetch('http://localhost:3000/api/projects');
+                const projects = await response.json();
+                
+                // Chunk projects into groups of 6
+                const chunkSize = 6;
+                const basePage = 14;
+                for (let i = 0; i < projects.length; i += chunkSize) {
+                    const chunk = projects.slice(i, i + chunkSize);
+                    
+                    // Clone template
+                    const clone = template.content.cloneNode(true);
+                    const grid = clone.querySelector('.project-grid');
+                    
+                    // Update Page Numbers logic
+                    const pageIndex = (i / chunkSize);
+                    if (pageIndex === 0) {
+                        clone.querySelector('.page-number').textContent = basePage.toString();
+                        clone.querySelector('.footer-page-number').textContent = 'PAGE ' + basePage;
+                    } else {
+                        clone.querySelector('.page-number').textContent = basePage.toString(); 
+                        clone.querySelector('.footer-page-number').textContent = 'PAGE ' + basePage + '.' + (pageIndex + 1);
+                    }
+
+                    // Populate Grid
+                    chunk.forEach(p => {
+                        // Handle display of Emoji vs Image
+                        let iconHtml = '';
+                        if (p.isImage) {
+                             iconHtml = `<div class="h-32 bg-brand-800 rounded-xl mb-3 flex items-center justify-center group-hover:scale-105 transition overflow-hidden">
+                                <img src="${p.icon}" class="h-full w-full object-cover">
+                             </div>`;
+                        } else {
+                            iconHtml = `<div class="h-32 bg-brand-800 rounded-xl mb-3 flex items-center justify-center text-4xl group-hover:scale-105 transition">${p.icon}</div>`;
+                        }
+
+                        const card = document.createElement('div');
+                        card.className = 'bg-brand-900 rounded-2xl p-4 border border-brand-700 hover:border-brand-500 transition group flex flex-col h-full';
+                        card.innerHTML = `
+                            ${iconHtml}
+                            <h3 class="text-lg font-bold mb-1 text-brand-100">${p.title}</h3>
+                            <p class="text-xs text-brand-300 mb-4 flex-grow">${p.description}</p>
+                            ${p.url && p.url !== '#' ? `
+                                <a href="${p.url}" target="_blank" class="inline-flex items-center gap-2 text-[10px] font-black text-brand-400 uppercase tracking-widest hover:text-white transition">
+                                    View Project 
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            ` : ''}
+                        `;
+                        grid.appendChild(card);
+                    });
+                    
+                    container.appendChild(clone);
+                }
+            } catch (err) {
+                console.error('Error loading projects:', err);
+                container.innerHTML = '<div class="text-center p-10 text-red-500 bg-white m-4 rounded shadow">Error loading Major Projects. Please ensure backend is running (node server.js).</div>';
+            }
+        });
+    </script>
+
+    <!-- ================= PAGE 9: CONTACT ================= -->
+    <div class="page page-break relative bg-blue-gradient text-white flex flex-col justify-center items-center">
+         <div class="absolute inset-0 bg-tech-grid opacity-20"></div>
+
+        <div class="relative z-10 w-full max-w-4xl p-12">
+            <h2 class="text-6xl font-black mb-16 text-center">LET'S BUILD<br>THE FUTURE.</h2>
+
+            <div class="grid grid-cols-2 gap-12">
+                <div class="bg-white/10 backdrop-blur p-8 rounded-2xl border border-white/20">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                        <span class="text-4xl">🇲🇾</span> Malaysia (HQ)
+                    </h3>
+                    <p class="text-brand-100 leading-relaxed">
+                        Level 09, Integra Tower, The Intermark 348,<br>
+                        Jalan Tun Razak, 50400 Kuala Lumpur.
+                    </p>
+                    <div class="mt-4 font-bold text-brand-300">kualalumpur@techvelly.com</div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur p-8 rounded-2xl border border-white/20">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                        <span class="text-4xl">🇧🇩</span> Bangladesh
+                    </h3>
+                    <p class="text-brand-100 leading-relaxed">
+                        60 Feet, North Pirerbugh, Mirpur,<br>
+                        Dhaka-1216.
+                    </p>
+                    <div class="mt-4 font-bold text-brand-300">dhaka@techvelly.com</div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center border-t border-white/20 pt-8">
+                <p class="text-2xl font-bold tracking-widest">WWW.TECHVELLY.COM</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

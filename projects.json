@@ -7,64 +7,9 @@
     "isImage": true,
     "url": "https://techvelly.com"
   },
+ 
   {
     "id": 2,
-    "title": "Headless E-commerce",
-    "description": "Scalable, API-first commerce solution for high-volume retail.",
-    "icon": "🛒",
-    "url": "https://techvelly.com"
-  },
-  {
-    "id": 3,
-    "title": "Student Management",
-    "description": "Admin dashboard for educational institutions.",
-    "icon": "🎓",
-    "url": "https://techvelly.com"
-  },
-  {
-    "id": 4,
-    "title": "E-commerce App",
-    "description": "Native mobile experience for seamless shopping.",
-    "icon": "📱",
-    "url": "https://techvelly.com"
-  },
-  {
-    "id": 5,
-    "title": "Analytics Dashboard",
-    "description": "Real-time data visualization platform for enterprise metrics.",
-    "icon": "📊",
-    "url": "https://techvelly.com"
-  },
-  {
-    "id": 6,
-    "title": "Logistics Tracker",
-    "description": "IoT-based fleet management and route optimization system.",
-    "icon": "🚚",
-    "url": "https://techvelly.com"
-  },
-  {
-    "id": 7,
-    "title": "Real Estate Portal",
-    "description": "Property listing platform with virtual tour integration.",
-    "icon": "🏠",
-    "url": "https://techvelly.com"
-  },
-  {
-    "id": 8,
-    "title": "AI Chatbot",
-    "description": "Customer support automation using NLP and machine learning.",
-    "icon": "🤖",
-    "url": "https://techvelly.com"
-  },
-  {
-    "id": 9,
-    "title": "FinTech Wallet",
-    "description": "Secure digital wallet for peer-to-peer payments.",
-    "icon": "💳",
-    "url": "https://techvelly.com"
-  },
-  {
-    "id": 10,
     "title": "Amarosudh",
     "description": "Bangladesh's leading digital healthcare and pharmacy platform.",
     "icon": "Project/amarosudh.png",
@@ -72,11 +17,51 @@
     "url": "https://amarosudh.com"
   },
   {
-    "id": 11,
-    "title": "Techvelly ERP",
+    "id": 3,
+    "title": "ac.techvelly",
     "description": "Advanced enterprise resource planning and accounting solution.",
     "icon": "Project/ac.techvelly.png",
     "isImage": true,
     "url": "https://ac.techvelly.com"
+  },
+  {
+    "id": 4,
+    "title": "prestigelegacytrading",
+    "description": "Prestige Legacy Trading is a premier B2B e-commerce platform dedicated to the wholesale distribution of vape and e-cigarette products. Designed to empower retailers, the platform offers a curated catalog of high-demand, authentic brands such as Elfbar, Lost Mary, and Vaporesso at competitive wholesale prices. Key features include a streamlined ordering system for bulk purchases, verified product authenticity, and robust global logistics capable of shipping to over 50 countries.",
+    "icon": "Project/prestigelegacytrading.png",
+    "isImage": true,
+    "url": "https://prestigelegacytrading.com/"
+  },
+  {
+    "id": 5,
+    "title": "sparkfuelusa",
+    "description": "Spark Fuel USA is a wholesale fuel distributor that supplies gasoline, diesel, and specialty fuels nationwide. The company focuses on simplifying the fuel supply chain for gas stations, fleets, and government agencies through a tech-driven approach, offering features like real-time delivery tracking, instant digital invoicing, and 24/7 logistics support. They operate with a transparent Rack-linked pricing model and partner with major brands such as Shell, Chevron, and ExxonMobil to ensure reliable, compliant delivery across the continental United States.",
+    "icon": "Project/sparkfuelusa.png",
+    "isImage": true,
+    "url": "https://www.sparkfuelusa.com/"
+  },
+  {
+    "id": 6,
+    "title": "mkmetalew",
+    "description": "MK Metal & Engineering Works is a Malaysian company specializing in precision structural steel fabrication and engineering solutions. The company provides a wide range of services including the fabrication of load-bearing steel columns, beams, roofing, security gates, and other metal structures for commercial and industrial projects.",
+    "icon": "Project/mkmetalew.png",
+    "isImage": true,
+    "url": "https://www.mkmetalew.com/"
+  },
+  {
+    "id": 7,
+    "title": "ac.techvelly",
+    "description": "AutoConsultant is a specialized digital platform designed for the automotive and insurance adjusting industry. It streamlines the management of motor vehicle assessments, claims, and consultancy services. By digitizing traditional workflows, the platform enables adjusters and consultants to manage inspections, generate reports, and track cases with greater precision and speed.",
+    "icon": "Project/ac.techvelly.png",
+    "isImage": true,
+    "url": "https://ac.techvelly.com/"
+  },
+  {
+    "id": 8,
+    "title": "s24.techvelly",
+    "description": "S24 (Service24) is an advanced Service Management and On-Demand Delivery platform developed by Tech Velly. It is designed to bridge the gap between service providers and customers by offering a real-time marketplace for various professional and household services. The platform features a robust scheduling engine, secure payment gateways, and real-time tracking, making it an all-in-one solution for managing service-based business operations.",
+    "icon": "Project/s24.techvelly.png",
+    "isImage": true,
+    "url": "https://s24.techvelly.com/"
   }
 ]
