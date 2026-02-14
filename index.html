@@ -130,8 +130,11 @@
         
         .page-content {
             padding: 40px;
-            flex-grow: 1;
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
             padding-bottom: 80px; /* Space for footer */
+            overflow: hidden;
         }
 
         h2.section-title {
@@ -740,107 +743,107 @@
     <!-- ================= PAGE 7: INDUSTRIES (Creative Hive) ================= -->
     <div class="page page-break relative bg-white">
         <div class="page-content flex flex-col">
-            <div class="flex items-end justify-between mb-10 border-b border-brand-100 pb-4">
+            <div class="flex items-end justify-between mb-6 border-b border-brand-100 pb-3">
                 <div>
-                    <h2 class="section-title">Key Industries</h2>
-                    <p class="text-slate-500 text-sm font-medium mt-2">Transforming Sectors with Digital Innovation</p>
+                    <h2 class="section-title text-3xl">Key Industries</h2>
+                    <p class="text-slate-500 text-xs font-medium mt-1">Transforming Sectors with Digital Innovation</p>
                 </div>
                 <div class="text-brand-300 font-black text-6xl opacity-20">07</div>
             </div>
 
-            <div class="grid grid-cols-2 gap-6 flex-grow">
+            <div class="grid grid-cols-2 gap-4 flex-grow">
                 <!-- FinTech -->
-                <div class="poster-card p-6 relative overflow-hidden group border-b-4 border-b-blue-500">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
+                <div class="poster-card p-5 relative overflow-hidden group border-b-4 border-b-blue-500">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
                     <div class="relative z-10">
-                        <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-sm">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-3 shadow-sm">
                             💳
                         </div>
-                        <h3 class="text-xl font-black text-slate-800 mb-2">FinTech</h3>
-                        <p class="text-sm text-slate-500 leading-relaxed mb-4">Secure payment gateways, digital wallets, lending platforms, and blockchain solutions.</p>
+                        <h3 class="text-lg font-black text-slate-800 mb-1">FinTech</h3>
+                        <p class="text-[11px] text-slate-500 leading-relaxed mb-3">Secure payment gateways, digital wallets, lending platforms, and blockchain solutions.</p>
                         <div class="flex gap-2">
-                            <span class="text-[10px] font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded">PCI-DSS</span>
-                            <span class="text-[10px] font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded">Crypto</span>
+                            <span class="text-[9px] font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded">PCI-DSS</span>
+                            <span class="text-[9px] font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded">Crypto</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Education -->
-                <div class="poster-card p-6 relative overflow-hidden group border-b-4 border-b-green-500">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
+                <div class="poster-card p-5 relative overflow-hidden group border-b-4 border-b-green-500">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-green-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
                     <div class="relative z-10">
-                        <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-sm">
+                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-2xl mb-3 shadow-sm">
                             🎓
                         </div>
-                        <h3 class="text-xl font-black text-slate-800 mb-2">Education</h3>
-                        <p class="text-sm text-slate-500 leading-relaxed mb-4">LMS platforms, virtual classrooms, student information systems, and gamified learning.</p>
+                        <h3 class="text-lg font-black text-slate-800 mb-1">Education</h3>
+                        <p class="text-[11px] text-slate-500 leading-relaxed mb-3">LMS platforms, virtual classrooms, student information systems, and gamified learning.</p>
                         <div class="flex gap-2">
-                            <span class="text-[10px] font-bold bg-green-50 text-green-600 px-2 py-1 rounded">E-Learning</span>
-                            <span class="text-[10px] font-bold bg-green-50 text-green-600 px-2 py-1 rounded">SCORM</span>
+                            <span class="text-[9px] font-bold bg-green-50 text-green-600 px-2 py-0.5 rounded">E-Learning</span>
+                            <span class="text-[9px] font-bold bg-green-50 text-green-600 px-2 py-0.5 rounded">SCORM</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Logistics -->
-                <div class="poster-card p-6 relative overflow-hidden group border-b-4 border-b-orange-500">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
+                <div class="poster-card p-5 relative overflow-hidden group border-b-4 border-b-orange-500">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-orange-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
                     <div class="relative z-10">
-                        <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-sm">
+                        <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center text-2xl mb-3 shadow-sm">
                             🚚
                         </div>
-                        <h3 class="text-xl font-black text-slate-800 mb-2">Logistics</h3>
-                        <p class="text-sm text-slate-500 leading-relaxed mb-4">Fleet management, real-time tracking, supply chain optimization, and warehouse management.</p>
+                        <h3 class="text-lg font-black text-slate-800 mb-1">Logistics</h3>
+                        <p class="text-[11px] text-slate-500 leading-relaxed mb-3">Fleet management, real-time tracking, supply chain optimization, and warehouse management.</p>
                         <div class="flex gap-2">
-                            <span class="text-[10px] font-bold bg-orange-50 text-orange-600 px-2 py-1 rounded">GPS</span>
-                            <span class="text-[10px] font-bold bg-orange-50 text-orange-600 px-2 py-1 rounded">IoT</span>
+                            <span class="text-[9px] font-bold bg-orange-50 text-orange-600 px-2 py-0.5 rounded">GPS</span>
+                            <span class="text-[9px] font-bold bg-orange-50 text-orange-600 px-2 py-0.5 rounded">IoT</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Healthcare -->
-                <div class="poster-card p-6 relative overflow-hidden group border-b-4 border-b-red-500">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
+                <div class="poster-card p-5 relative overflow-hidden group border-b-4 border-b-red-500">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-red-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
                     <div class="relative z-10">
-                        <div class="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-sm">
+                        <div class="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center text-2xl mb-3 shadow-sm">
                             🩺
                         </div>
-                        <h3 class="text-xl font-black text-slate-800 mb-2">Healthcare</h3>
-                        <p class="text-sm text-slate-500 leading-relaxed mb-4">Telemedicine apps, EMR/EHR systems, patient portals, and appointment scheduling.</p>
+                        <h3 class="text-lg font-black text-slate-800 mb-1">Healthcare</h3>
+                        <p class="text-[11px] text-slate-500 leading-relaxed mb-3">Telemedicine apps, EMR/EHR systems, patient portals, and appointment scheduling.</p>
                         <div class="flex gap-2">
-                            <span class="text-[10px] font-bold bg-red-50 text-red-600 px-2 py-1 rounded">HIPAA</span>
-                            <span class="text-[10px] font-bold bg-red-50 text-red-600 px-2 py-1 rounded">HL7</span>
+                            <span class="text-[9px] font-bold bg-red-50 text-red-600 px-2 py-0.5 rounded">HIPAA</span>
+                            <span class="text-[9px] font-bold bg-red-50 text-red-600 px-2 py-0.5 rounded">HL7</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- E-Commerce -->
-                <div class="poster-card p-6 relative overflow-hidden group border-b-4 border-b-purple-500">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
+                <div class="poster-card p-5 relative overflow-hidden group border-b-4 border-b-purple-500">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-purple-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
                     <div class="relative z-10">
-                        <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-sm">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-3 shadow-sm">
                             🛍️
                         </div>
-                        <h3 class="text-xl font-black text-slate-800 mb-2">E-Commerce</h3>
-                        <p class="text-sm text-slate-500 leading-relaxed mb-4">Multi-vendor marketplaces, inventory management, POS systems, and mobile shopping apps.</p>
+                        <h3 class="text-lg font-black text-slate-800 mb-1">E-Commerce</h3>
+                        <p class="text-[11px] text-slate-500 leading-relaxed mb-3">Multi-vendor marketplaces, inventory management, POS systems, and mobile shopping apps.</p>
                         <div class="flex gap-2">
-                            <span class="text-[10px] font-bold bg-purple-50 text-purple-600 px-2 py-1 rounded">B2B/B2C</span>
-                            <span class="text-[10px] font-bold bg-purple-50 text-purple-600 px-2 py-1 rounded">Payment</span>
+                            <span class="text-[9px] font-bold bg-purple-50 text-purple-600 px-2 py-0.5 rounded">B2B/B2C</span>
+                            <span class="text-[9px] font-bold bg-purple-50 text-purple-600 px-2 py-0.5 rounded">Payment</span>
                         </div>
                     </div>
                 </div>
 
                  <!-- Real Estate -->
-                 <div class="poster-card p-6 relative overflow-hidden group border-b-4 border-b-yellow-500">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
+                 <div class="poster-card p-5 relative overflow-hidden group border-b-4 border-b-yellow-500">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
                     <div class="relative z-10">
-                        <div class="w-14 h-14 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-sm">
+                        <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center text-2xl mb-3 shadow-sm">
                             🏢
                         </div>
-                        <h3 class="text-xl font-black text-slate-800 mb-2">Real Estate</h3>
-                        <p class="text-sm text-slate-500 leading-relaxed mb-4">Property listings, virtual tours, CRM for agents, and property management systems.</p>
+                        <h3 class="text-lg font-black text-slate-800 mb-1">Real Estate</h3>
+                        <p class="text-[11px] text-slate-500 leading-relaxed mb-3">Property listings, virtual tours, CRM for agents, and property management systems.</p>
                         <div class="flex gap-2">
-                            <span class="text-[10px] font-bold bg-yellow-50 text-yellow-600 px-2 py-1 rounded">VR Tours</span>
-                            <span class="text-[10px] font-bold bg-yellow-50 text-yellow-600 px-2 py-1 rounded">CRM</span>
+                            <span class="text-[9px] font-bold bg-yellow-50 text-yellow-600 px-2 py-0.5 rounded">VR Tours</span>
+                            <span class="text-[9px] font-bold bg-yellow-50 text-yellow-600 px-2 py-0.5 rounded">CRM</span>
                         </div>
                     </div>
                 </div>
