@@ -63,5 +63,13 @@
     "icon": "Project/s24.techvelly.png",
     "isImage": true,
     "url": "https://s24.techvelly.com/"
+  },
+  {
+    "id": 9,
+    "title": "lc.techvelly",
+    "description": "lc.techVelly is a centralized Law Management and Client Coordination portal designed to streamline the sales funnel and project tracking for TechVelly’s engineering and cooling solutions. It serves as the digital bridge between initial client inquiries and technical execution, ensuring that every project requirement is captured with precision and handled with speed.",
+    "icon": "Project/lc.techvelly.png",
+    "isImage": true,
+    "url": "https://lc.techvelly.com/"
   }
 ]
